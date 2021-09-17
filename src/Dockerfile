@@ -26,12 +26,12 @@ RUN mkdir -p /etc/hetrixtools_dl
 RUN wget https://raw.github.com/hetrixtools/agent/master/hetrixtools_install.sh -P /etc/hetrixtools_dl
 
 # Copy file as the install command will delete the original file
-RUN cp etc/hetrixtools_dl/hetrixtools_install.sh etc/hetrixtools_dl/hetrixtools_install_cp.sh
-RUN chmod --reference=etc/hetrixtools_dl/hetrixtools_install.sh etc/hetrixtools_dl/hetrixtools_install_cp.sh
-RUN chown --reference=etc/hetrixtools_dl/hetrixtools_install.sh etc/hetrixtools_dl/hetrixtools_install_cp.sh
+RUN cp /etc/hetrixtools_dl/hetrixtools_install.sh /etc/hetrixtools_dl/hetrixtools_install_cp.sh
+RUN chmod --reference=/etc/hetrixtools_dl/hetrixtools_install.sh /etc/hetrixtools_dl/hetrixtools_install_cp.sh
+RUN chown --reference=/etc/hetrixtools_dl/hetrixtools_install.sh /etc/hetrixtools_dl/hetrixtools_install_cp.sh
 
 # Copy start.sh script and allow execution
-COPY ./src/start.sh ./start.sh
+COPY ./start.sh ./start.sh
 RUN chmod +x ./start.sh
 
 ENTRYPOINT  ["/bin/bash", "./start.sh"]
