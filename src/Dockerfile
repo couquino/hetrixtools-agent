@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 ENV HETRIX_AGENT_PARAMS=''
 
 # About
-LABEL version="0.3.0"
+LABEL version="0.3.1"
 LABEL description="Container for Hetrix Linux agent"
 LABEL maintainer="github.com/couquino"
 
@@ -15,7 +15,7 @@ RUN apt update
 # wget - needed for downloading the agent
 # cron - needed for scheduling agent cron job
 # iproute2 - needed for ip command
-RUN apt install -y wget iproute2 cron && \
+RUN apt install -y wget iproute2 cron net-tools && \
     rm -rf /var/lib/apt/lisuts/* && \
     apt clean
 
